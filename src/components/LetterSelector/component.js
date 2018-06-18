@@ -6,11 +6,24 @@ import './styles.css';
 import { LETTERS } from './constants';
 
 class LetterSelectorComponent extends React.Component {
+  getLetterButtons = () => {
+    const { selectedLetters } = this.props;
+    return LETTERS.map((letter, i) => {
+      const selected = selectedLetters.includes(letter);
+      return (
+        <LetterButton 
+          key={i} 
+          letter={letter} 
+          disabled={selected} 
+          onSelectHandler={this.props.onSelectHandler} />
+      );
+    });
+  }
+
   render() {
     return (
       <div className="letter-selector">
-        Letter Selector Component
-        <LetterButton letter={'a'} />
+        { this.getLetterButtons() }
       </div>
     );
   }
