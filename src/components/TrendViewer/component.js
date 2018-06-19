@@ -11,44 +11,46 @@ class TrendViewerComponent extends React.Component {
       isLoaded: false
     };
     this.lastSelectedLetters = this.props.selectedLetters.slice();
-    this.isNewIframe = true;
+    this.isNewIframe = false;
+    this.isLoaded = false;
+    this.flag = false;
   }
 
-  shouldComponentUpdate() {
-    if (this.isNewIframe && this.state.isLoaded) {
-      this.setState({ isLoaded: false });
-      return false;
-    }
-    return true;
-  }
+  // shouldComponentUpdate() {
+  //   if (this.isNewIframe && this.state.isLoaded) {
+  //     this.setState({ isLoaded: false });
+  //     return false;
+  //   }
+  //   return true;
+  // }
 
   render() {
     const { reloadHandler } = this;
-    let { lastSelectedLetters } = this;
-    const { isLoaded } = this.state;
+    let { lastSelectedLetters, isLoaded } = this;
     const { selectedLetters } = this.props;
     if (
       selectedLetters.length >= 0 &&
       lastSelectedLetters !== selectedLetters
     ) {
+      this.lastSelectedLetters = selectedLetters;
       embedTrendViewer(selectedLetters, message => {
         this.isNewIframe = true;
-        console.log(message);
+        this.isLoaded = false;
         const iframe = document
           .getElementsByClassName('trend-graph')[0]
           .getElementsByTagName('iframe')[0];
         iframe.onload = () => {
           this.isNewIframe = false;
-          this.setState({ isLoaded: true });
+          this.isLoaded = true;
+          this.forceUpdate();
         };
+        this.forceUpdate();
       });
     }
 
-    lastSelectedLetters = selectedLetters;
-
     return (
       <div className="trend-viewer">
-        <LoadingSpinner enabled={isLoaded} />
+        <LoadingSpinner disabled={isLoaded} />
         <div className="trend-graph" ref={this.trendGraphRef} />
       </div>
     );

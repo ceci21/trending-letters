@@ -1,8 +1,8 @@
 import React from 'react';
 
 const LoadingSpinnerComponent = (props) => {
-  const { enabled } = props;
-  if (enabled) {
+  const { disabled } = props;
+  if (!disabled) {
     return (
       <div className="loading-spinner">Loading...</div>
     )

@@ -15,6 +15,7 @@ class AppComponent extends React.Component {
       limit: 5,
       warningMessageEnabled: false
     };
+    this.lastSelectedLetters = this.state.selectedLetters.slice();
   }
 
   onSelectHandler = (letter) => {
@@ -33,7 +34,7 @@ class AppComponent extends React.Component {
   }
 
   render() {
-    const selectedLetters = this.state.selectedLetters.slice();
+    const selectedLetters = this.state.selectedLetters;
     const { warningMessageEnabled } = this.state;
 
     return (
