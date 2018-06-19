@@ -73,9 +73,7 @@ class AppComponent extends React.Component {
             <TrendViewer selectedLetters={selectedLetters} />
           </div>
         </div>
-        <div className="footer">
-          please hire me
-        </div>
+        <div className="footer"/>
       </div>
     );
   }
