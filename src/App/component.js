@@ -11,7 +11,7 @@ class AppComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedLetters: ['A', 'B', 'C', 'D', 'E'],
+      selectedLetters: [],
       limit: 5,
       warningMessageEnabled: false
     };
@@ -42,7 +42,8 @@ class AppComponent extends React.Component {
           selectedLetters={selectedLetters} 
           onSelectHandler={this.onSelectHandler} />
         <WarningMessage enabled={warningMessageEnabled} />
-        <TrendViewer />
+        <TrendViewer 
+          selectedLetters={selectedLetters} />
         <HtmlEmbed />
       </div>
     );
