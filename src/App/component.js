@@ -1,6 +1,6 @@
 import React from 'react';
 import { LetterSelector } from '../components/LetterSelector';
-import { HtmlEmbed } from '../components/HtmlEmbed';
+// import { HtmlEmbed } from '../components/HtmlEmbed';
 import { TrendViewer } from '../components/TrendViewer';
 import { WarningMessage } from '../components/WarningMessage';
 import { removeLetter } from '../lib';
@@ -11,41 +11,53 @@ class AppComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedLetters: [],
+      selectedLetters: ['L'],
       limit: 5,
-      warningMessageEnabled: false
+      maximumLettersReached: false,
+      minimumLettersReached: false
     };
     this.lastSelectedLetters = this.state.selectedLetters.slice();
   }
 
-  onSelectHandler = (letter) => {
+  onSelectHandler = letter => {
     let selectedLetters = this.state.selectedLetters.slice();
     let isAlreadySelected = selectedLetters.includes(letter);
 
-    if (!isAlreadySelected && selectedLetters.length < 5 && selectedLetters.length >= 0) {
+    if (
+      !isAlreadySelected &&
+      selectedLetters.length < 5 &&
+      selectedLetters.length >= 1
+    ) {
       selectedLetters.push(letter);
-      this.setState({ selectedLetters, warningMessageEnabled: false });
-    } else if (isAlreadySelected) {
+      this.setState({ selectedLetters, maximumLettersReached: false, minimumLettersReached: false });
+    } else if (isAlreadySelected && selectedLetters.length > 1) {
       selectedLetters = removeLetter(letter, selectedLetters);
-      this.setState({ selectedLetters, warningMessageEnabled: false });
+      this.setState({ selectedLetters, maximumLettersReached: false, minimumLettersReached: false });
+    } else if (isAlreadySelected && selectedLetters.length === 1) {
+      this.setState({ minimumLettersReached: true })
     } else {
-      this.setState({ warningMessageEnabled: true })
+      this.setState({ maximumLettersReached: true });
     }
-  }
+  };
 
   render() {
     const selectedLetters = this.state.selectedLetters;
-    const { warningMessageEnabled } = this.state;
+    const { maximumLettersReached, minimumLettersReached } = this.state;
 
     return (
       <div className="app">
-        <LetterSelector 
-          selectedLetters={selectedLetters} 
-          onSelectHandler={this.onSelectHandler} />
-        <WarningMessage enabled={warningMessageEnabled} />
-        <TrendViewer 
-          selectedLetters={selectedLetters} />
-        <HtmlEmbed />
+        <div className="sec-1">
+          <LetterSelector
+            selectedLetters={selectedLetters}
+            onSelectHandler={this.onSelectHandler}
+          />
+        </div>
+        <div className="sec-2">
+          <WarningMessage maxReached={maximumLettersReached} minReached={minimumLettersReached} />
+        </div>
+        <div className="sec-3">
+          <TrendViewer selectedLetters={selectedLetters} />
+        </div>
       </div>
     );
   }

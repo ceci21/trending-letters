@@ -16,21 +16,18 @@ class LetterSelectorComponent extends React.Component {
     return LETTERS.map((letter, i) => {
       const selected = selectedLetters.includes(letter);
       return (
-        <LetterButton 
-          key={i} 
-          letter={letter} 
-          disabled={selected} 
-          onSelectHandler={this.props.onSelectHandler} />
+        <LetterButton
+          key={i}
+          letter={letter}
+          selected={selected}
+          onSelectHandler={this.props.onSelectHandler}
+        />
       );
     });
-  }
+  };
 
   render() {
-    return (
-      <div className="letter-selector">
-        { this.getLetterButtons() }
-      </div>
-    );
+    return <div className="letter-selector">{this.getLetterButtons()}</div>;
   }
 }
 

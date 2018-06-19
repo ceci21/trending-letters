@@ -1,4 +1,31 @@
-.message {
-  color: red;
+.warning-message {
+  grid-area: b;
+  color: #ff0019;
   font-style: italic;
+  height: 1rem stretch;
+  max-height: 2rem;
+  float: left;
+  width: 100%;
+}
+
+.fade-in {
+  opacity: 1;
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in;
+  animation-duration: 0.5s;
+  transition: translate(0px, 4px);
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+    bottom: -1rem;
+    transform: translate(0, 1rem);
+  }
+  100% {
+    opacity: 1;
+    bottom: 0;
+    transform: translate(0, 0);
+  }
 }

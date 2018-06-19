@@ -1,3 +1,10 @@
 .trend-viewer {
-  width: 700px;
+  min-height: 380px;
+  height: 400px stretch;
+  padding: 0;
+}
+
+.hidden {
+  max-width: 0;
+  max-height: 0;
 }
