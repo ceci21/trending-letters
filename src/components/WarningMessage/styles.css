@@ -1,12 +1,31 @@
 .warning-message {
   grid-area: b;
-  color: #ff0019;
+  color: #FE6B8B;
   font-style: italic;
   height: 1rem stretch;
   max-height: 2rem;
   float: left;
   width: 100%;
 }
+
+.warning-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+.warning-icon {
+  font-size: 2rem;
+  display: inline-block;
+  padding-top: 2px;
+  padding-right: 0.8rem;
+}
+
+.warning-text {
+  font-size: 1rem;
+  display: inline-block;
+}
+
 
 .fade-in {
   opacity: 1;

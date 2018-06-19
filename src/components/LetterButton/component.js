@@ -3,7 +3,6 @@ import Button from '@material-ui/core/Button';
 
 import './styles.css';
 
-//#2182F8
 
 const styles = {
   deselected: {
@@ -14,13 +13,13 @@ const styles = {
     padding: '0 30px',
     boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
     width: '100%',
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
   }, 
   selected: {
     border: 0,
     width: '100%',
     textTransform: 'capitalize',
-    boxShadow: '0'
+    boxShadow: '0',
   }
 };
 

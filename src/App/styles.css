@@ -7,7 +7,7 @@
     'a c c';
   grid-template-rows: auto;
   grid-template-columns: 15rem 1.5fr 1.5fr;
-  padding: 4rem;
+  padding: 0 4rem 4rem 4rem;
 }
 
 .sec-1 {
@@ -19,10 +19,13 @@
   display: grid;
   justify-content: left;
   padding: 0.5rem;
+  padding: 0 0 0 1rem;
 }
 
 .sec-3 {
   grid-area: c;
+  position: sticky;
+  padding: 0 0 0 1rem;
 }
 
 @media only screen and (max-width: 768px) {
@@ -44,19 +47,16 @@
 
   .sec-1 {
     grid-area: c;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
   }
 
   .sec-2 {
     grid-area: b;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0 1rem 0.5rem 1rem;
   }
 
   .sec-3 {
     grid-area: a;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
+    padding: 0 0.5rem 0 0.5rem;
   }
 }

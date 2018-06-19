@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from '@material-ui/core/Icon';
 
 import './styles.css';
 
@@ -15,7 +16,16 @@ const WarningMessageComponent = props => {
   if (message !== '') {
     fade = 'fade-in';
   }
-  return <div className={`warning-message ${fade}`}>{message}</div>;
+  return (
+    <div className={`warning-message ${fade}`}>
+      <div className="warning-container">
+        <span className="warning-icon">{message !== '' ? <Icon>warning</Icon> : null}</span>
+        <span className="warning-text">
+        {message}
+        </span>
+      </div>
+    </div>
+  );
 };
 
 export const WarningMessage = WarningMessageComponent;

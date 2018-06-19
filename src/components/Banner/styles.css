@@ -1,0 +1,21 @@
+.banner {
+  font-family: 'Roboto' sans-serif;
+  font-size: 4rem;
+  font-weight: bolder;
+  padding: 2rem 0 2rem 4rem;
+  text-shadow: 0 4px lightgrey;
+}
+
+@media only screen and (max-width: 768px) {
+  .banner {
+    font-size: 2.3rem;
+    padding: 2rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .banner {
+    font-size: 1.5rem;
+    padding: 2rem;
+  }
+}
