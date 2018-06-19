@@ -1,7 +1,7 @@
 import React from 'react';
 import { Banner } from '../components/Banner';
 import { LetterSelector } from '../components/LetterSelector';
-// import { HtmlEmbed } from '../components/HtmlEmbed';
+import { PrivacyPolicyModal } from '../components/PrivacyPolicyModal';
 import { TrendViewer } from '../components/TrendViewer';
 import { WarningMessage } from '../components/WarningMessage';
 import { removeLetter } from '../lib';
