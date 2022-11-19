@@ -2,7 +2,6 @@
   "name": "letter-trend-viewer",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://ceci21.github.io/trending-letters",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "react": "^16.4.1",
